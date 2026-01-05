@@ -1,0 +1,66 @@
+﻿@model EmployeeManagement.Models.Employee
+
+@{
+    ViewData["Title"] = "Add Employee";
+}
+
+<h2>Add Employee</h2>
+
+<form asp-action="Create" method="post">
+    @Html.AntiForgeryToken()
+
+    <div class="mb-3">
+        <label asp-for="EmpName"></label>
+        <input asp-for="EmpName" class="form-control" />
+        <span asp-validation-for="EmpName" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Email"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="state"></label>
+        <select asp-for="state" class="form-control">
+            <option value="">Select</option>
+            <option>MAH</option>
+            <option>GUJ</option>
+            <option>MP</option>
+        </select>
+        <span asp-validation-for="state" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="City"></label>
+        <select asp-for="City" class="form-control">
+            <option value="">Select</option>
+            <option>Pune</option>
+            <option>Mumbai</option>
+            <option>Surat</option>
+            <option>Vadodara</option>
+            <option>Indore</option>
+            <option>Bhopal</option>
+        </select>
+        <span asp-validation-for="City" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Dateofjoin"></label>
+        <input asp-for="Dateofjoin" class="form-control" />
+        <span asp-validation-for="Dateofjoin" class="text-danger"></span>
+    </div>
+
+    <div class="form-check mb-3">
+        <input asp-for="IsActive" class="form-check-input" />
+        <label asp-for="IsActive" class="form-check-label"></label>
+    </div>
+
+    <button type="submit" class="btn btn-success">Save</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

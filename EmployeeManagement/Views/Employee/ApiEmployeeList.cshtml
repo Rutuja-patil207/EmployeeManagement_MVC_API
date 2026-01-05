@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "Employees (From API)";
+}
+
+<h2>Employees (Loaded from API)</h2>
+
+<table class="table table-bordered" id="empTable">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>State</th>
+            <th>City</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+<script>
+    fetch('/api/employees')
+        .then(response => response.json())
+        .then(data => {
+            let rows = '';
+            data.forEach(e => {
+                rows += `
+                    <tr>
+                        <td>${e.EmpName}</td>
+                        <td>${e.Email}</td>
+                        <td>${e.state}</td>
+                        <td>${e.City}</td>
+                    </tr>`;
+            });
+            document.querySelector('#empTable tbody').innerHTML = rows;
+        });
+</script>
